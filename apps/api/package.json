@@ -1,0 +1,21 @@
+{
+  "name": "@repo/api",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "encore build",
+    "dev": "encore run",
+    "lint": "eslint \"**/*.ts\""
+  },
+  "dependencies": {
+    "@google/genai": "^0.3.0",
+    "encore.dev": "^1.44.0",
+    "pdf-lib": "^1.17.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.0",
+    "eslint": "^9.8.0",
+    "typescript": "^5.5.4"
+  }
+}
