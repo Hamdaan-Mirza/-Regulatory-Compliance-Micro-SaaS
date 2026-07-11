@@ -1,0 +1,71 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build-and-test:
+    name: Build, Lint, and Typecheck
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Setup Turborepo Cache
+        uses: actions/cache@v4
+        with:
+          path: .turbo
+          key: ${{ runner.os }}-turbo-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-turbo-
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Encore CLI
+        run: curl -L https://encore.dev/install.sh | bash
+        
+      - name: Add Encore to Path
+        run: echo "$HOME/.encore/bin" >> $GITHUB_PATH
+
+      - name: Typecheck Backend (Encore)
+        run: cd apps/backend && encore check
+
+      - name: Lint Workspace
+        run: pnpm turbo run lint
+
+      - name: Build Next.js Frontend
+        run: pnpm turbo run build --filter=frontend
+        
+      # Note: Actual deployment to Cloudflare Pages is best handled 
+      # by connecting the Cloudflare dashboard directly to this GitHub repo,
+      # which automatically triggers a deployment on push to `main`.
+      # Encore also auto-deploys when you push to the `encore` remote, 
+      # or you can link it directly to your GitHub repo in the Encore Cloud dashboard.
