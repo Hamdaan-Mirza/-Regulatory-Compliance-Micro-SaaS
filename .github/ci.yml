@@ -2,9 +2,9 @@ name: CI Pipeline
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "dev"]
   pull_request:
-    branches: ["main"]
+    branches: ["main", "dev"]
 
 jobs:
   build-and-test:
@@ -55,17 +55,13 @@ jobs:
       - name: Add Encore to Path
         run: echo "$HOME/.encore/bin" >> $GITHUB_PATH
 
+      # CHANGED: CD into apps/api instead of apps/backend
       - name: Typecheck Backend (Encore)
-        run: cd apps/backend && encore check
+        run: cd apps/api && encore check
 
       - name: Lint Workspace
         run: pnpm turbo run lint
 
+      # CHANGED: Filter set to "web" instead of "frontend"
       - name: Build Next.js Frontend
-        run: pnpm turbo run build --filter=frontend
-        
-      # Note: Actual deployment to Cloudflare Pages is best handled 
-      # by connecting the Cloudflare dashboard directly to this GitHub repo,
-      # which automatically triggers a deployment on push to `main`.
-      # Encore also auto-deploys when you push to the `encore` remote, 
-      # or you can link it directly to your GitHub repo in the Encore Cloud dashboard.
+        run: pnpm turbo run build --filter=web
