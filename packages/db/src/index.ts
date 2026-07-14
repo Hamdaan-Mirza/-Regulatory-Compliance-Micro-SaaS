@@ -1,8 +1,4 @@
-import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-
-export interface Database {}
-
-export const createSupabase = (
-  supabaseUrl: string,
-  supabaseAnonKey: string,
-): SupabaseClient<Database> => createClient<Database>(supabaseUrl, supabaseAnonKey);
+export { createSupabaseBrowserClient } from "./client";
+export { createSupabaseServerClient } from "./server";
+export { createSupabaseAdminClient } from "./admin";
+export type { Database } from "@complystack/types";

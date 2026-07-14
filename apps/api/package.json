@@ -1,21 +1,29 @@
 {
-  "name": "@repo/api",
+  "name": "@complystack/api",
   "version": "0.0.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "encore build",
-    "dev": "encore run",
-    "lint": "eslint \"**/*.ts\""
+    "build": "tsc --noEmit",
+    "dev": "wrangler dev",
+    "lint": "eslint \"**/*.ts\"",
+    "type-check": "tsc --noEmit",
+    "deploy": "wrangler deploy"
   },
   "dependencies": {
+    "@complystack/types": "workspace:*",
+    "@complystack/db": "workspace:*",
     "@google/genai": "^0.3.0",
-    "encore.dev": "^1.44.0",
-    "pdf-lib": "^1.17.1"
+    "pdf-lib": "^1.17.1",
+    "@supabase/supabase-js": "^2.45.4",
+    "hono": "^4.5.8",
+    "jose": "^5.6.3"
   },
   "devDependencies": {
     "@types/node": "^22.5.0",
     "eslint": "^9.8.0",
-    "typescript": "^5.5.4"
+    "typescript": "^5.5.4",
+    "wrangler": "^3.72.0",
+    "@cloudflare/workers-types": "^4.20240815.0"
   }
 }

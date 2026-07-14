@@ -1,5 +1,5 @@
 {
-  "name": "@repo/types",
+  "name": "@complystack/types",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -11,5 +11,11 @@
   "scripts": {
     "build": "tsc -p tsconfig.json --noEmit",
     "lint": "eslint \"src/**/*.ts\""
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4"
   }
 }

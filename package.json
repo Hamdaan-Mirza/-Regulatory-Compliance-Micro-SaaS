@@ -1,7 +1,7 @@
 {
-  "name": "regulatory-compliance-micro-saas",
+  "name": "complystack",
   "private": true,
-  "packageManager": "pnpm@9.0.0",
+  "packageManager": "pnpm@9.7.0",
   "workspaces": [
     "apps/*",
     "packages/*"
@@ -9,12 +9,14 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
-    "lint": "turbo run lint"
+    "lint": "turbo run lint",
+    "type-check": "turbo run type-check",
+    "clean": "turbo run clean && rm -rf node_modules"
   },
   "devDependencies": {
     "eslint": "^9.8.0",
     "prettier": "^3.3.3",
-    "turbo": "^2.0.14",
+    "turbo": "^2.1.0",
     "typescript": "^5.5.4"
   }
 }
