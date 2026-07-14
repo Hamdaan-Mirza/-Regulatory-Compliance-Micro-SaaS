@@ -1,0 +1,17 @@
+name = "complystack-api"
+main = "src/index.ts"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+SUPABASE_URL = "https://your-project-ref.supabase.co"
+
+# Secrets are NOT set here. Set them with:
+#   wrangler secret put SUPABASE_SERVICE_ROLE_KEY
+# Never commit the service role key to this file or to git.
+
+[env.production]
+name = "complystack-api-production"
+
+[env.staging]
+name = "complystack-api-staging"
