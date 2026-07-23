@@ -15,6 +15,8 @@ export type ComplianceStatus = "approved" | "not_approved" | "unverified";
 export interface User {
   id: string; // UUID, FK -> auth.users.id
   email: string;
+  firstName: string;
+  lastName: string;
   role: UserRole;
   credit_balance: number;
   created_at: string;
@@ -61,7 +63,7 @@ export interface Database {
     Tables: {
       users: {
         Row: User;
-        Insert: Partial<User> & Pick<User, "id" | "email">;
+        Insert: Partial<User> & Pick<User, "id" | "email" | "firstName" | "lastName">;
         Update: Partial<User>;
       };
       approved_hardware: {
@@ -89,6 +91,10 @@ export interface Database {
 export interface AuthenticatedUserDTO {
   id: string;
   email: string;
+  firstName: string;
+  lastName: string;
   role: UserRole;
   creditBalance: number;
 }
+
+export * from "./schemas";
