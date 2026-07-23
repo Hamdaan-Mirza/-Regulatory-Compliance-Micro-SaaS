@@ -1,5 +1,7 @@
 import { createSupabaseServerClient } from "@complystack/db/server";
 import { cookies } from "next/headers";
+
+export const runtime = "edge";
 import { redirect } from "next/navigation";
 
 export default async function DashboardPage() {
