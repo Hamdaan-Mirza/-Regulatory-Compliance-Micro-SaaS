@@ -66,6 +66,12 @@ pnpm type-check
 # Lint everything
 pnpm lint
 
+# Test everything
+pnpm test
+
+# Run tests with UI or coverage (once vitest is setup)
+pnpm turbo run test
+
 # Type-check or lint just one package
 pnpm --filter @complystack/types type-check
 
