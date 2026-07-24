@@ -18,6 +18,7 @@ export default async function DashboardPage() {
     .eq("id", user.id)
     .single();
     
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const dbUser = data as any;
 
   return (

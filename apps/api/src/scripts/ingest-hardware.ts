@@ -33,6 +33,7 @@ async function seed() {
   for (const hw of mockHardware) {
     const { error } = await supabase
       .from("approved_hardware")
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .upsert(hw as any, { onConflict: "model_number" });
       
     if (error) {

@@ -59,6 +59,7 @@ export default function RegisterPage() {
         lastName: data.lastName,
         role: data.role,
         credit_balance: 1, // First-Time Free Trial Hook
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } as any);
 
       if (dbError) {

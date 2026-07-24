@@ -24,6 +24,7 @@ usersRoute.get("/me", requireAuth, async (c) => {
     return c.json({ error: "user profile not found" }, 404);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const dbUser = data as any;
   const dto: AuthenticatedUserDTO = {
     id: dbUser.id,

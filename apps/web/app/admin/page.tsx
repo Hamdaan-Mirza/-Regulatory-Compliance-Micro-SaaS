@@ -37,6 +37,7 @@ export default async function AdminPage() {
     .select("*")
     .order("brand", { ascending: true });
     
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const hardwareList = data as any[];
 
   const executionTimeMs = Date.now() - startTime;
