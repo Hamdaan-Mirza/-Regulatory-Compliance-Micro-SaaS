@@ -1,6 +1,5 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
-import type { UserRole } from "@complystack/types";
 
 // Helper to interact with Cloudflare Rate Limiter binding
 async function checkRateLimit(request: NextRequest): Promise<boolean> {
