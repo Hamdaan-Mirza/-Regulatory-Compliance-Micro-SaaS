@@ -11,12 +11,17 @@
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "type-check": "turbo run type-check",
-    "clean": "turbo run clean && rm -rf node_modules"
+    "clean": "turbo run clean && rm -rf node_modules",
+    "test": "turbo run test"
   },
   "devDependencies": {
-    "eslint": "^9.8.0",
-    "prettier": "^3.3.3",
-    "turbo": "^2.1.0",
-    "typescript": "^5.5.4"
+    "@typescript-eslint/eslint-plugin": "^8.65.0",
+    "@typescript-eslint/parser": "^8.65.0",
+    "@vitest/ui": "^4.1.10",
+    "eslint": "^8.57.1",
+    "prettier": "^3.9.6",
+    "turbo": "^2.10.6",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.10"
   }
 }

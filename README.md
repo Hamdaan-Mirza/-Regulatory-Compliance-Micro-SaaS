@@ -66,6 +66,12 @@ pnpm type-check
 # Lint everything
 pnpm lint
 
+# Test everything
+pnpm test
+
+# Run tests with UI or coverage (once vitest is setup)
+pnpm turbo run test
+
 # Type-check or lint just one package
 pnpm --filter @complystack/types type-check
 
@@ -164,17 +170,3 @@ pnpm install
 rm -rf node_modules apps/*/node_modules packages/*/node_modules pnpm-lock.yaml
 pnpm install
 
-
-# Abhay i added this for u specifically coz u use github desktop, u can use this to learn how to use terminal
-
-git status
-git add .
-git commit -m "message"
-git push origin your-branch-name
-
-# New feature branch
-git checkout -b feature/dashboard-ui
-
-# Pull latest main before starting new work
-git checkout main
-git pull origin main
